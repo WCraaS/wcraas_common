@@ -19,8 +19,7 @@ deploy:
   provider: pypi
   distributions: sdist bdist_wheel
   user: panagiks
-  password:
-    secure: PLEASE_REPLACE_ME
+  password: $PYPI_PASS
   on:
     tags: true
     repo: WCraaS/wcraas_common
