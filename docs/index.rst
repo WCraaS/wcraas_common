@@ -1,5 +1,5 @@
-Welcome to common's documentation!
-======================================
+Welcome to wcraas_common's documentation!
+=========================================
 
 .. toctree::
    :maxdepth: 2
