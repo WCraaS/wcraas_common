@@ -4,7 +4,7 @@
 
 __author__ = """Kolokotronis Panagiotis"""
 __email__ = "panagiks@gmail.com"
-__version__ = "__version__ = '0.1.2'"
+__version__ = "__version__ = '0.1.3'"
 
 from wcraas_common.config import AMQPConfig  # NOQA
 from wcraas_common.wcraas_common import WcraasWorker  # NOQA
