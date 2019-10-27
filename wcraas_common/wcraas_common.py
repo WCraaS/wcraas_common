@@ -96,12 +96,26 @@ class WcraasWorker(ABC):
             await sub_channel.set_qos(prefetch_count=1)
             for func in self._discover("is_consume"):
                 queue_name = func.consume_queue
-                exchange = await sub_channel.declare_exchange(queue_name, ExchangeType.FANOUT)
-                queue = await sub_channel.declare_queue(exclusive=True)
-                await queue.bind(exchange)
-                await queue.consume(self.store)
+                await self.register_consumer(sub_channel, func, queue_name)
                 self.logger.info(f"Registered {queue_name} ...")
             await self._close.wait()
+
+    @staticmethod
+    async def register_consumer(sub_channel, consumer, queue):
+        """
+        Given a channel, a consumer function and a queue name register & start the consumption.
+
+        :param sub_channel: An aio-pika Channel used for the subscriotion.
+        :type sub_channel: aio_pika.Channel
+        :param consumer: Consumer function that will handle incoming messages in the queue.
+        :type consumer: Callable
+        :param queue: Name of the queue to subscribe to.
+        :type queue: string
+        """
+        exchange = await sub_channel.declare_exchange(queue_name, ExchangeType.FANOUT)
+        queue = await sub_channel.declare_queue(exclusive=True)
+        await queue.bind(exchange)
+        await queue.consume(consumer)
 
     @abstractmethod
     async def start(self):
