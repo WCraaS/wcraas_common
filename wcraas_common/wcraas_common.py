@@ -8,7 +8,8 @@ import aio_pika
 
 from abc import ABC, abstractmethod
 
-from aio_pika import connect_robust
+from aio_pika import connect_robust, ExchangeType
+from aio_pika.patterns import RPC
 from aio_pika.pool import Pool
 
 from wcraas_common.config import AMQPConfig
