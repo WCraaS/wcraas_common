@@ -2,6 +2,14 @@
 History
 =======
 
+0.1.2 (2019-10-27)
+------------------
+
+* Move RPC & Consume initialization to common module
+* Provide consume & is_rpc decorators
+* `WcraasWorker` is now an Abstract Class.
+
+
 0.1.1 (2019-10-02)
 ------------------
 
