@@ -2,6 +2,12 @@
 History
 =======
 
+0.1.7 (2019-10-28)
+------------------
+
+* BUGFIX: Correct `start_consume`'s argument `queue` => `queue_name`.
+
+
 0.1.6 (2019-10-02)
 ------------------
 

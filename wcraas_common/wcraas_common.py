@@ -101,7 +101,7 @@ class WcraasWorker(ABC):
             await self._close.wait()
 
     @staticmethod
-    async def register_consumer(sub_channel, consumer, queue):
+    async def register_consumer(sub_channel, consumer, queue_name):
         """
         Given a channel, a consumer function and a queue name register & start the consumption.
 
@@ -109,8 +109,8 @@ class WcraasWorker(ABC):
         :type sub_channel: aio_pika.Channel
         :param consumer: Consumer function that will handle incoming messages in the queue.
         :type consumer: Callable
-        :param queue: Name of the queue to subscribe to.
-        :type queue: string
+        :param queue_name: Name of the queue to subscribe to.
+        :type queue_name: string
         """
         exchange = await sub_channel.declare_exchange(queue_name, ExchangeType.FANOUT)
         queue = await sub_channel.declare_queue(exclusive=True)
